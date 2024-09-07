@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yell Into the Void</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 flex flex-col justify-center items-center min-h-screen text-white">
+
+    <!-- container -->
+    <div class="text-center">
+        <h1 class="text-4xl font-bold mb-6">Yell Into the Void</h1>
+        <p class="text-lg mb-8">Type anything and send it into the void!</p>
+
+        <!-- input & button -->
+        <div class="flex space-x-4 justify-center">
+            <input id="voidInput" type="text" placeholder="Type here..."
+                class="bg-gray-800 text-white p-3 rounded-md outline-none focus:ring-2 focus:ring-purple-600 w-80" />
+            <button onclick="sendToVoid()"
+                class="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-700 transition-all duration-300">Send
+                to Void</button>
+        </div>
+
+        <!-- placeholder for void response -->
+        <div id="voidResponse" class="mt-8 opacity-0 transition-opacity duration-500">
+            <p>You have yelled into the void, and the void has yelled back... nothing.</p>
+        </div>
+    </div>
+
+    <script>
+        function sendToVoid() {
+            const input = document.getElementById("voidInput");
+            const response = document.getElementById("voidResponse");
+
+            // clear input field and show a message from "the void"
+            if (input.value.trim()) {
+                input.value = ''; // clears input
+                response.classList.remove('opacity-0'); // show the void response
+                setTimeout(() => response.classList.add('opacity-0'), 2000); // hide it again after 2 seconds
+            }
+        }
+    </script>
+
+</body>
+
+</html>
